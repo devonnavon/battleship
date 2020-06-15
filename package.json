@@ -5,7 +5,8 @@
 	"private": true,
 	"scripts": {
 		"test": "jest",
-		"watch-test": "jest --watch"
+		"watch-test": "jest --watch",
+		"build": "webpack"
 	},
 	"repository": {
 		"type": "git",
@@ -19,6 +20,7 @@
 	"homepage": "https://github.com/devonnavon/battleship#readme",
 	"devDependencies": {
 		"@babel/preset-env": "^7.10.2",
+		"html-webpack-plugin": "^4.3.0",
 		"jest": "^26.0.1",
 		"webpack": "^4.43.0",
 		"webpack-cli": "^3.3.11"
