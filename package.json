@@ -1,0 +1,26 @@
+{
+	"name": "battleship",
+	"version": "1.0.0",
+	"description": "1. Your ‘ships’ will be objects that include their length, where they’ve been hit and whether or not they’ve been sunk. 2. REMEMBER you only have to test your object’s public interface. Only methods or properties that are used outside of your ‘ship’ object need unit tests. 3. Ships should have a hit() function that takes a number and then marks that position as ‘hit’. 4. isSunk() should be a function that calculates it based on their length and whether all of their positions are ‘hit’.",
+	"private": true,
+	"scripts": {
+		"test": "jest",
+		"watch-test": "jest --watch"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/devonnavon/battleship.git"
+	},
+	"author": "devon and lenny",
+	"license": "ISC",
+	"bugs": {
+		"url": "https://github.com/devonnavon/battleship/issues"
+	},
+	"homepage": "https://github.com/devonnavon/battleship#readme",
+	"devDependencies": {
+		"@babel/preset-env": "^7.10.2",
+		"jest": "^26.0.1",
+		"webpack": "^4.43.0",
+		"webpack-cli": "^3.3.11"
+	}
+}
