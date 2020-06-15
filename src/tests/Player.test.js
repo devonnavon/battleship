@@ -1,6 +1,6 @@
-import { Ship } from '../Ship';
-import { Gameboard } from '../Gameboard';
-import { Player } from '../Player';
+import { Ship } from '../gameObjects/Ship';
+import { Gameboard } from '../gameObjects/Gameboard';
+import { Player } from '../gameObjects/Player';
 
 it('Create an instance a Player', () => {
 	const player = Player();

@@ -1,4 +1,4 @@
-import { Ship } from '../Ship';
+import { Ship } from '../gameObjects/Ship';
 
 it('Create an instance of Ship', () => {
 	const ship = Ship(3);

@@ -1,5 +1,5 @@
-import { Ship } from '../Ship';
-import { Gameboard } from '../Gameboard';
+import { Ship } from '../gameObjects/Ship';
+import { Gameboard } from '../gameObjects/Gameboard';
 
 it('Create an instance a Gameboard', () => {
 	const board = Gameboard();
