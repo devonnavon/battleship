@@ -21,10 +21,16 @@ const Gameboard = () => {
 	};
 
 	const receiveAttack = (coords) => {
-		if (!(coords in board)) misses++;
-		else {
+		if (coords == null) {
+			throw Error('you fucked up!');
+		}
+		if (!(coords in board)) {
+			misses++;
+			return false;
+		} else {
 			const boardObj = board[coords];
 			boardObj.ship.hit(boardObj.index);
+			return true;
 		}
 	};
 
