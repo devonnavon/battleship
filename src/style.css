@@ -21,8 +21,8 @@
 	display: grid;
 	height: 500px;
 	width: 500px;
-	grid-template-columns: repeat(11, auto);
-	grid-template-rows: repeat(11, auto);
+	grid-template-columns: repeat(11, 45px);
+	grid-template-rows: repeat(11, 45px);
 	grid-row-gap: 1px;
 	grid-column-gap: 1px;
 }
@@ -53,4 +53,9 @@
 
 #computerBoard .board {
 	grid-area: computerBoard;
+}
+
+.ship {
+	background-color: blue;
+	grid-gap: 0px;
 }

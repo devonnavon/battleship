@@ -43,7 +43,9 @@ const Gameboard = () => {
 		return true;
 	};
 
-	return { place, receiveAttack, getMisses, gameOver };
+	const getBoard = () => board;
+
+	return { place, receiveAttack, getMisses, getBoard, gameOver };
 };
 
 export { Gameboard };
