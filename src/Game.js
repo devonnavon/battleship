@@ -9,6 +9,12 @@ const Game = (() => {
 	const humanBoard = Gameboard();
 	const computerBoard = Gameboard();
 
+	const getBoardDOM = () => {
+		const humanBoardDOM = document.getElementById('humanBoard');
+		const computerBoardDOM = document.getElementById('computerBoard');
+		return { human: humanBoardDOM, computer: computerBoardDOM };
+	};
+
 	const getShips = () => {
 		return [
 			Ship(4),
@@ -25,19 +31,41 @@ const Game = (() => {
 	};
 
 	const placeShips = (board) => {
-		//temp
 		const ships = getShips();
 		board.place(ships[0], 'ver', 'A1');
 		board.place(ships[1], 'hor', 'C1');
+		board.place(ships[2], 'hor', 'E4');
+		board.place(ships[3], 'ver', 'H6');
 	};
 	placeShips(humanBoard);
 	placeShips(computerBoard);
 
-	const boardClick = (e) => {
-		console.log(e.target.classList[0]);
+	const updateBoard = (board, boardDOM, move) => {
+		const theBoard = board.getBoard();
+		if (board.gameOver()) {
+			console.log('Game Over!');
+		} else {
+			if (move in theBoard) {
+				boardDOM.querySelector(['.', move].join('')).classList.add('hit');
+			} else {
+				boardDOM.querySelector(['.', move].join('')).classList.add('miss');
+			}
+		}
 	};
 
-	const buildBoard = (board) => {
+	const boardClick = (e) => {
+		if (human.getTurn()) {
+			e.target.removeEventListener('click', boardClick);
+			let humanMove = human.attack(computer, e.target.classList[0]);
+			updateBoard(computerBoard, getBoardDOM().computer, humanMove);
+			while (computer.getTurn()) {
+				let computerMove = computer.attack(human);
+				updateBoard(humanBoard, getBoardDOM().human, computerMove);
+			}
+		}
+	};
+
+	const buildBoard = (board, computer = false) => {
 		const ids = setMoves();
 		const boardDOM = document.createElement('div');
 		boardDOM.classList.add('board');
@@ -79,21 +107,21 @@ const Game = (() => {
 			if (id in board.getBoard()) {
 				boardElement.classList.add('ship');
 			}
-			boardElement.addEventListener('click', boardClick);
+			if (computer) boardElement.addEventListener('click', boardClick);
 			boardDOM.appendChild(boardElement);
 		});
 		return boardDOM;
 	};
 
 	const setBoards = () => {
-		const humanBoardDOM = document.getElementById('humanBoard');
-		const computerBoardDOM = document.getElementById('computerBoard');
-		humanBoardDOM.appendChild(buildBoard(humanBoard));
-		computerBoardDOM.appendChild(buildBoard(computerBoard));
+		getBoardDOM().human.appendChild(buildBoard(humanBoard));
+		getBoardDOM().computer.appendChild(buildBoard(computerBoard, true));
 	};
 
 	const render = () => {
 		setBoards();
+		human.setBoard(humanBoard);
+		computer.setBoard(computerBoard);
 	};
 
 	return { render };

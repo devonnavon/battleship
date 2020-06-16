@@ -7,7 +7,9 @@ const Ship = (l) => {
 	const hit = (position) => {
 		ship[position] = 1;
 	};
-	return { length, isSunk, isHit, hit };
+	const getShip = () => ship;
+
+	return { length, isSunk, isHit, hit, getShip };
 };
 
 export { Ship };

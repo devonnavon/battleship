@@ -11,6 +11,7 @@ const Gameboard = () => {
 				board[String.fromCharCode(letnum + i) + num] = {
 					ship: ship,
 					index: i,
+					hit: false,
 				};
 			}
 		} else if (orientation === 'ver') {
@@ -30,6 +31,7 @@ const Gameboard = () => {
 		} else {
 			const boardObj = board[coords];
 			boardObj.ship.hit(boardObj.index);
+			boardObj.hit = true;
 			return true;
 		}
 	};

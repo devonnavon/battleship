@@ -20,6 +20,7 @@ const Player = (user = 'human') => {
 			enemy.setTurn();
 			setTurn();
 		}
+		return coords;
 	};
 
 	const getTurn = () => turn;

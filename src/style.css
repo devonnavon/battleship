@@ -23,8 +23,7 @@
 	width: 500px;
 	grid-template-columns: repeat(11, 45px);
 	grid-template-rows: repeat(11, 45px);
-	grid-row-gap: 1px;
-	grid-column-gap: 1px;
+	grid-gap: 1;
 }
 
 .board > div {
@@ -56,6 +55,15 @@
 }
 
 .ship {
-	background-color: blue;
+	background-color: pink;
 	grid-gap: 0px;
+	border: 1px rgb(180, 139, 146) !important;
+}
+
+.hit {
+	background-color: red !important;
+}
+
+.miss {
+	background-color: gray !important;
 }
