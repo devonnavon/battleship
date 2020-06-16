@@ -93,7 +93,7 @@
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("// Imports\nvar ___CSS_LOADER_API_IMPORT___ = __webpack_require__(/*! ../node_modules/css-loader/dist/runtime/api.js */ \"./node_modules/css-loader/dist/runtime/api.js\");\nexports = ___CSS_LOADER_API_IMPORT___(false);\n// Module\nexports.push([module.i, \"\", \"\"]);\n// Exports\nmodule.exports = exports;\n\n\n//# sourceURL=webpack:///./src/style.css?./node_modules/css-loader/dist/cjs.js");
+eval("// Imports\nvar ___CSS_LOADER_API_IMPORT___ = __webpack_require__(/*! ../node_modules/css-loader/dist/runtime/api.js */ \"./node_modules/css-loader/dist/runtime/api.js\");\nexports = ___CSS_LOADER_API_IMPORT___(false);\n// Module\nexports.push([module.i, \"#container {\\n\\tdisplay: grid;\\n\\tgrid-template-columns: 150px 500px 500px;\\n\\tgrid-template-rows: 150px 500px;\\n\\tgrid-column-gap: 30px;\\n\\tgrid-template-areas:\\n\\t\\t'header header header'\\n\\t\\t'ships humanBoard computerBoard';\\n}\\n\\n#ships {\\n\\theight: 150px;\\n\\twidth: 150px;\\n\\tborder: 1px black solid;\\n}\\n\\n.board {\\n\\tdisplay: grid;\\n\\theight: 500px;\\n\\twidth: 500px;\\n\\tgrid-template-columns: repeat(11, auto);\\n\\tgrid-template-rows: repeat(11, auto);\\n\\tgrid-row-gap: 1px;\\n\\tgrid-column-gap: 1px;\\n\\tborder: 1px black solid;\\n}\\n\\n.board > div {\\n\\tborder: 1px black solid;\\n}\\n\\n#humanBoard .board {\\n\\tgrid-area: humanBoard;\\n}\\n\\n#computerBoard .board {\\n\\tgrid-area: computerBoard;\\n}\\n\", \"\"]);\n// Exports\nmodule.exports = exports;\n\n\n//# sourceURL=webpack:///./src/style.css?./node_modules/css-loader/dist/cjs.js");
 
 /***/ }),
 
@@ -121,6 +121,30 @@ eval("\n\nvar isOldIE = function isOldIE() {\n  var memo;\n  return function mem
 
 /***/ }),
 
+/***/ "./src/Game.js":
+/*!*********************!*\
+  !*** ./src/Game.js ***!
+  \*********************/
+/*! exports provided: Game */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"Game\", function() { return Game; });\n/* harmony import */ var _helpers__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./helpers */ \"./src/helpers.js\");\n\n\nconst Game = (() => {\n\tconst buildBoard = () => {\n\t\tconst ids = Object(_helpers__WEBPACK_IMPORTED_MODULE_0__[\"setMoves\"])();\n\t\tconst board = document.createElement('div');\n\t\tboard.classList.add('board');\n\n\t\t'ABCDEFGHIJ'.split('');\n\n\t\tids.forEach((id, i) => {\n\t\t\tconst boardElement = document.createElement('div');\n\t\t\tboardElement.classList.add(id);\n\t\t\tboard.appendChild(boardElement);\n\t\t});\n\t\treturn board;\n\t};\n\n\tconst setBoards = () => {\n\t\tconst humanBoard = document.getElementById('humanBoard');\n\t\tconst computerBoard = document.getElementById('computerBoard');\n\t\thumanBoard.appendChild(buildBoard());\n\t\tcomputerBoard.appendChild(buildBoard());\n\t};\n\n\tconst render = () => {\n\t\tsetBoards();\n\t};\n\n\treturn { render };\n})();\n\n\n\n\n//# sourceURL=webpack:///./src/Game.js?");
+
+/***/ }),
+
+/***/ "./src/helpers.js":
+/*!************************!*\
+  !*** ./src/helpers.js ***!
+  \************************/
+/*! exports provided: setMoves */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"setMoves\", function() { return setMoves; });\nconst setMoves = () => {\n\tconst alpha = 'ABCDEFGHIJ'.split('');\n\tconst num = [...Array(11).keys()].slice(1);\n\tlet f = (a, b) => [].concat(...a.map((a) => b.map((b) => [].concat(a, b))));\n\tlet cartesian = (a, b, ...c) => (b ? cartesian(f(a, b), ...c) : a);\n\tlet allMoves = [];\n\tcartesian(alpha, num).forEach((e) => {\n\t\tallMoves.push(e.join(''));\n\t});\n\treturn allMoves;\n};\n\n\n\n\n//# sourceURL=webpack:///./src/helpers.js?");
+
+/***/ }),
+
 /***/ "./src/index.js":
 /*!**********************!*\
   !*** ./src/index.js ***!
@@ -129,7 +153,19 @@ eval("\n\nvar isOldIE = function isOldIE() {\n  var memo;\n  return function mem
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _style_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./style.css */ \"./src/style.css\");\n/* harmony import */ var _style_css__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_style_css__WEBPACK_IMPORTED_MODULE_0__);\n\n\nconst container = document.createElement('div');\ndocument.body.appendChild(container);\n\nconst board1 = document.createElement('div');\nconst board2 = document.createElement('div');\n\ncontainer.appendChild(board1);\ncontainer.appendChild(board2);\n\n\n//# sourceURL=webpack:///./src/index.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _style_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./style.css */ \"./src/style.css\");\n/* harmony import */ var _style_css__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_style_css__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _setup__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./setup */ \"./src/setup.js\");\n/* harmony import */ var _Game__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Game */ \"./src/Game.js\");\n\n\n\n\nObject(_setup__WEBPACK_IMPORTED_MODULE_1__[\"setup\"])();\n_Game__WEBPACK_IMPORTED_MODULE_2__[\"Game\"].render();\n\n\n//# sourceURL=webpack:///./src/index.js?");
+
+/***/ }),
+
+/***/ "./src/setup.js":
+/*!**********************!*\
+  !*** ./src/setup.js ***!
+  \**********************/
+/*! exports provided: setup */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"setup\", function() { return setup; });\nconst setup = () => {\n\tconst container = document.createElement('div');\n\tcontainer.setAttribute('id', 'container');\n\tdocument.body.appendChild(container);\n\n\tconst ships = document.createElement('div');\n\tconst board1 = document.createElement('div');\n\tconst board2 = document.createElement('div');\n\n\tships.setAttribute('id', 'ships');\n\tboard1.setAttribute('id', 'humanBoard');\n\tboard2.setAttribute('id', 'computerBoard');\n\n\tcontainer.appendChild(ships);\n\tcontainer.appendChild(board1);\n\tcontainer.appendChild(board2);\n};\n\n\n\n\n//# sourceURL=webpack:///./src/setup.js?");
 
 /***/ }),
 

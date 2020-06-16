@@ -1,10 +1,6 @@
 import './style.css';
+import { setup } from './setup';
+import { Game } from './Game';
 
-const container = document.createElement('div');
-document.body.appendChild(container);
-
-const board1 = document.createElement('div');
-const board2 = document.createElement('div');
-
-container.appendChild(board1);
-container.appendChild(board2);
+setup();
+Game.render();

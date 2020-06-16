@@ -1,0 +1,38 @@
+#container {
+	display: grid;
+	grid-template-columns: 150px 500px 500px;
+	grid-template-rows: 150px 500px;
+	grid-column-gap: 30px;
+	grid-template-areas:
+		'header header header'
+		'ships humanBoard computerBoard';
+}
+
+#ships {
+	height: 150px;
+	width: 150px;
+	border: 1px black solid;
+}
+
+.board {
+	display: grid;
+	height: 500px;
+	width: 500px;
+	grid-template-columns: repeat(11, auto);
+	grid-template-rows: repeat(11, auto);
+	grid-row-gap: 1px;
+	grid-column-gap: 1px;
+	border: 1px black solid;
+}
+
+.board > div {
+	border: 1px black solid;
+}
+
+#humanBoard .board {
+	grid-area: humanBoard;
+}
+
+#computerBoard .board {
+	grid-area: computerBoard;
+}

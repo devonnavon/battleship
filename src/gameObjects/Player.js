@@ -1,4 +1,7 @@
+import { setMoves } from '../helpers';
+
 const Player = (user = 'human') => {
+	let allMoves = setMoves();
 	let turn = user === 'human' ? true : false;
 	let board;
 
@@ -31,18 +34,17 @@ const Player = (user = 'human') => {
 		return move;
 	};
 
-	const setMoves = () => {
-		const alpha = 'ABCDEFGHIJ'.split('');
-		const num = [...Array(11).keys()].slice(1);
-		let f = (a, b) => [].concat(...a.map((a) => b.map((b) => [].concat(a, b))));
-		let cartesian = (a, b, ...c) => (b ? cartesian(f(a, b), ...c) : a);
-		let allMoves = [];
-		cartesian(alpha, num).forEach((e) => {
-			allMoves.push(e.join(''));
-		});
-		return allMoves;
-	};
-	let allMoves = setMoves();
+	// const setMoves = () => {
+	// 	const alpha = 'ABCDEFGHIJ'.split('');
+	// 	const num = [...Array(11).keys()].slice(1);
+	// 	let f = (a, b) => [].concat(...a.map((a) => b.map((b) => [].concat(a, b))));
+	// 	let cartesian = (a, b, ...c) => (b ? cartesian(f(a, b), ...c) : a);
+	// 	let allMoves = [];
+	// 	cartesian(alpha, num).forEach((e) => {
+	// 		allMoves.push(e.join(''));
+	// 	});
+	// 	return allMoves;
+	// };
 
 	return { setBoard, getBoard, attack, getTurn, setTurn };
 };
